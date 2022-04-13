@@ -1,6 +1,6 @@
 package com.nfragiskatos.stockmarketviewer.domain.model
 
-data class CompanyListingModel(
+data class CompanyListing(
     val name: String,
     val symbol: String,
     val exchange: String
