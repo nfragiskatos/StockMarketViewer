@@ -7,6 +7,22 @@ plugins {
     id 'com.google.devtools.ksp' version '1.6.10-1.0.2'
 }
 
+// sensitive data read
+def noKeyFound = '"NO_KEY_FOUND"'
+def alphaVantageApiKey = noKeyFound
+def sensitiveDataFile = file('../sensitive_data.txt')
+Properties sensitiveData = new Properties()
+
+if (sensitiveDataFile.canRead()) {
+    // Read the sensitive data from file sensitive_data.txt
+    sensitiveData.load(new FileInputStream(sensitiveDataFile))
+    if (sensitiveData != null) {
+        if (sensitiveData.containsKey('alphaVantageApiKey')) {
+            alphaVantageApiKey = sensitiveData['alphaVantageApiKey']
+        }
+    }
+}
+
 android {
     compileSdk 31
 
@@ -18,6 +34,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "ALPHA_VANTAGE_API_KEY", alphaVantageApiKey
+        resValue "string", "ALPHA_VANTAGE_API_KEY", alphaVantageApiKey
+
+        buildConfigField "String", "ALPHA_VANTAGE_API_BASE_URL", "\"https://www.alphavantage.co/query\""
+
         vectorDrawables {
             useSupportLibrary true
         }

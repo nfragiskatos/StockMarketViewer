@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# sensitive data
+sensitive_data.txt
