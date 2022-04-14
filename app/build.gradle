@@ -23,6 +23,17 @@ if (sensitiveDataFile.canRead()) {
     }
 }
 
+kotlin {
+    sourceSets {
+        debug {
+            kotlin.srcDir("build/generated/ksp/debug/kotlin")
+        }
+        release {
+            kotlin.srcDir("build/generated/ksp/release/kotlin")
+        }
+    }
+}
+
 android {
     compileSdk 31
 
@@ -38,7 +49,7 @@ android {
         buildConfigField "String", "ALPHA_VANTAGE_API_KEY", alphaVantageApiKey
         resValue "string", "ALPHA_VANTAGE_API_KEY", alphaVantageApiKey
 
-        buildConfigField "String", "ALPHA_VANTAGE_API_BASE_URL", "\"https://www.alphavantage.co/query\""
+        buildConfigField "String", "ALPHA_VANTAGE_API_BASE_URL", "\"https://www.alphavantage.co/query/\""
 
         vectorDrawables {
             useSupportLibrary true
@@ -99,8 +110,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha"
 
     // Compose Nav Destinations
-    implementation 'io.github.raamcosta.compose-destinations:core:1.1.2-beta'
-    ksp 'io.github.raamcosta.compose-destinations:ksp:1.1.2-beta'
+    implementation 'io.github.raamcosta.compose-destinations:core:1.4.4-beta'
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.4.4-beta'
 
     // Coil
     implementation "io.coil-kt:coil-compose:1.4.0"
