@@ -3,15 +3,14 @@ package com.nfragiskatos.stockmarketviewer.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val DarkColorPalette = darkColors(
-    primary = Color.Green,
-    background = DarkBlue,
+    primary = LightPink,
+    background = DarkPurple,
     onPrimary = Color.DarkGray,
-    onBackground = TextWhite
+    onBackground = Vanilla
 )
 
 @Composable
